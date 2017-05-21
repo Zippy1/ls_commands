@@ -240,10 +240,8 @@ end
 mute.send_message = send_message
 
 local function broadcast_message(sender, message)
-	for _,player in ipairs(minetest.get_connected_players()) do
-		local name = player:get_player_name()
-		send_message(sender, name, message)
-	end
+	minetest.chat_send_all(message);
+	irc:say(message);
 end
 
 mute.broadcast_message = broadcast_message
@@ -291,6 +289,7 @@ minetest.register_on_shutdown(function()
 end)
 
 minetest.register_on_chat_message(function(username, message)
+	irc:say("<" .. username .. "> " .. message)
 	for _,player in ipairs(minetest.get_connected_players()) do
 		local name = player:get_player_name()
 		if name ~= username then
