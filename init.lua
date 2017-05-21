@@ -1,7 +1,8 @@
---Most code by Zippy1, some isn't though.--
---License: none yet.--
+--[[ ls_commands by Zippy1, bugs fixed by luk3yx and hopefully
+the irc in-game chat should now relay messages.
+Enjoy.
+]]
 
---Notice, orginally by kaeza.--
 notice = { }
 
 function notice.send(target, text)
@@ -70,7 +71,7 @@ minetest.register_chatcommand("annoy_antigravity", {
 })
 minetest.register_chatcommand("annoy_freeze", {
    params = "<person>",
-   description = "Sets speed+jump to 0. Can't move unless teleported or blocks removed under them",
+   description = "Sets speed+jump to 0. Can't move unless teleported or blocks removed under them.",
    privs = {annoy=true},
    func = function(name, param)
       local player = minetest.get_player_by_name(param)
@@ -395,6 +396,7 @@ minetest.register_chatcommand("givemoderator", {
 			minetest.set_player_privs(param,privs)
 			minetest.chat_send_player(param, "You are now a moderator.")
 			minetest.chat_send_player(name, param .. " is now a moderator.")
+				irc:say(name,param .. " is now a moderator.")
 			return true
 		end
 end})
