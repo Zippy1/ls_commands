@@ -386,11 +386,11 @@ minetest.register_chatcommand("givemoderator", {
 			privs.home=true
 			privs.interact=true
 			privs.noclip=true
-      privs.kick=true
-      privs.shout=true
-      privs.spill=true
-      privs.fly=true
-      privs.give=true
+                        privs.kick=true
+                        privs.shout=true
+                        privs.spill=true
+                        privs.fly=true
+                        privs.give=true
 			privs.settime=true
 			privs.teleport=true
 			minetest.set_player_privs(param,privs)
