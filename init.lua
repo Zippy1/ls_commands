@@ -289,7 +289,7 @@ minetest.register_on_shutdown(function()
 end)
 
 minetest.register_on_chat_message(function(username, message)
-	irc:say(message)
+	irc:say("<" .. username .. "> " .. message)
 	for _,player in ipairs(minetest.get_connected_players()) do
 		local name = player:get_player_name()
 		if name ~= username then
